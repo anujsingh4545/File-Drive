@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .common_btn {
-  @apply px-5 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  rounded-sm;
+  @apply px-5 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  outline-none rounded-sm;
 }
 
 @layer base {
