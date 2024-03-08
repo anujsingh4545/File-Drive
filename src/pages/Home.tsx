@@ -1,10 +1,10 @@
 const Home = () => {
   return (
-    <div className=" h-[calc(100dvh-70px)]">
+    <div className=" h-[calc(100dvh-60px)]">
       <main className=" w-full h-full  flex  flex-col items-center justify-center  ">
-        <img src="/unnamed.png" className="rounded-full h-40 md:h-48 outline-dashed outline-2 p-1 " alt="" />
+        <img src="/unnamed.png" className="rounded-full h-40 md:h-42 outline-dashed outline-2 p-1 " alt="" />
 
-        <h1 className="  text-center text-[1.7rem] md:text-[3rem] font-bold font-madami  tracking-wider mt-5">
+        <h1 className="  text-center text-[1.7rem] md:text-[2.8rem] font-bold font-madami  tracking-wider mt-5">
           The easiest way to upload <br /> and share files with your <br /> organization.
         </h1>
 
