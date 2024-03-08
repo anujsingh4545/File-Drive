@@ -1,4 +1,3 @@
-import {MoveRight} from "lucide-react";
 import LoginMedia from "../components/Login/LoginMedia";
 
 const Login = () => {
