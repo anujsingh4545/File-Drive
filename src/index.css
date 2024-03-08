@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.common_btn {
+  @apply px-5 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  rounded-sm;
+}
+
+@layer base {
+  body {
+    @apply text-[0.9rem]  bg-gradient-to-br from-slate-100 from-20% via-purple-300 via-80% to-slate-300 to-100%;
+  }
+  html {
+    font-family: "Poppins", system-ui, sans-serif;
+    @apply tracking-wider;
+  }
+  h1 {
+    @apply text-[2rem];
+  }
+  h2 {
+    @apply text-[1.5rem];
+  }
+  h3 {
+    @apply text-[1.2rem];
+  }
+  h4 {
+    @apply text-[1.1rem];
+  }
+  h5 {
+    @apply text-[1rem];
+  }
+}
