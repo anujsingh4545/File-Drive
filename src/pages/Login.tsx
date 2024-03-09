@@ -2,7 +2,7 @@ import LoginMedia from "../components/Login/LoginMedia";
 
 const Login = () => {
   return (
-    <div className=" w-full h-[calc(100dvh-60px)] flex items-center justify-center  px-3 md:px-0 ">
+    <div className=" w-full h-[100dvh] pt-[60px] flex items-center justify-center  px-3 md:px-0 ">
       <main className=" w-[100%] md:w-[50%] lg:w-[30%]  h-fit  flex flex-col items-center justify-center bg-white/20  rounded-md shadow-md px-5 py-10  ">
         <h2 className="  font-madami font-semibold text-left w-full "> Login </h2>
         <p className=" w-full text-left mt-1 text-slate-700 ">to continue to file-drive</p>

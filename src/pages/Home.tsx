@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className=" h-[calc(100dvh-60px)]">
+    <div className=" h-[100dvh] pt-[60px] ">
       <main className=" w-full h-full  flex  flex-col items-center justify-center  ">
         <img src="/unnamed.png" className="rounded-full h-40 md:h-42 outline-dashed outline-1 p-1 " alt="" />
 
@@ -14,7 +14,7 @@ const Home = () => {
         <h5 className=" mt-3  md:mt-2 text-center px-4 text-[0.8rem] ">Make an account and start managing your files in less than a minute. </h5>
 
         <section className=" flex  mt-10 items-center justify-center gap-5 flex-row ">
-          <Link to="/login">
+          <Link to="/dashboard">
             <button className=" common_btn ">Get Started </button>
           </Link>
           <p className=" cursor-pointer  flex items-center justify-center gap-2">
