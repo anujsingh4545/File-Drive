@@ -18,7 +18,6 @@ const Home = () => {
             <button className=" common_btn ">Get Started </button>
           </Link>
           <p className=" cursor-pointer  flex items-center justify-center gap-2">
-            {" "}
             Learn More <MoveRight size={18} />
           </p>
         </section>

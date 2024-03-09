@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const NavbarTop = () => {
   return (
-    <main className="  fixed h-[60px]  w-full bg-white shadow-md ">
+    <main className="  fixed h-[60px] top-0  w-full bg-white shadow-md ">
       <div className=" w-full h-full  px-3 md:px-10 flex justify-between items-center">
         <section className=" flex flex-row items-center justify-center gap-3 ">
           <img src=" /unnamed.png " alt="" className=" h-12  rounded-full " />

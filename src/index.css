@@ -32,15 +32,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #bd91ed;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ffffff;
+  width: 0px;
 }
