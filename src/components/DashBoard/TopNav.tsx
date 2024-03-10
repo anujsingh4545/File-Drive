@@ -1,8 +1,10 @@
 import {LayoutGrid, Rows3, Search, Upload} from "lucide-react";
 import {useState} from "react";
+import {useRecoilState} from "recoil";
+import viewFilesOrder from "../../recoil/atoms/ViewFilesOrder";
 
 const TopNav = () => {
-  const [layout, setLayout] = useState<boolean>(true);
+  const [fileorder, setFileOrder] = useRecoilState(viewFilesOrder);
 
   return (
     <main className="  shadow-sm   h-36 bg-white/30 ">
@@ -30,10 +32,10 @@ const TopNav = () => {
         {/*  */}
 
         <section className=" flex items-center justify-center ">
-          <p className={`flex items-center justify-center gap-2   px-3 py-2 rounded-l-full cursor-pointer text-slate-800  shadow-sm ${layout ? "bg-white" : "bg-white/20"} ease-in-out duration-150 transform   `} onClick={() => setLayout(true)}>
+          <p className={`flex items-center justify-center gap-2   px-3 py-2 rounded-l-full cursor-pointer text-slate-800  shadow-sm ${fileorder ? "bg-white" : "bg-white/20"} ease-in-out duration-150 transform   `} onClick={() => setFileOrder(true)}>
             <LayoutGrid size={18} /> Grid
           </p>
-          <p className={` flex items-center shadow-sm justify-center gap-2  text-slate-800  px-3 py-2 rounded-r-full cursor-pointer ${!layout ? "bg-white" : "bg-white/20"} ease-in-out duration-150 transform  `} onClick={() => setLayout(false)}>
+          <p className={` flex items-center shadow-sm justify-center gap-2  text-slate-800  px-3 py-2 rounded-r-full cursor-pointer ${!fileorder ? "bg-white" : "bg-white/20"} ease-in-out duration-150 transform  `} onClick={() => setFileOrder(false)}>
             <Rows3 size={18} /> Table
           </p>
         </section>
