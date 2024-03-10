@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className=" h-[100dvh] pt-[60px] ">
+    <div className=" h-screen pt-[60px] ">
       <main className=" w-full h-full  flex  flex-col items-center justify-center  ">
         <img src="/unnamed.png" className="rounded-full h-40 md:h-42 outline-dashed outline-1 p-1 " alt="" />
 

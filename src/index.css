@@ -8,11 +8,11 @@
 
 @layer base {
   body {
-    @apply text-[0.9rem]  bg-gradient-to-br from-slate-100 from-20% via-purple-300 via-80% to-slate-300 to-100%;
+    @apply text-[0.9rem];
   }
   html {
     font-family: "Poppins", system-ui, sans-serif;
-    @apply tracking-wider;
+    @apply tracking-wider min-w-[350px] bg-gradient-to-br from-slate-100 from-20% via-purple-300 via-80% to-slate-300 to-100%;
   }
   h1 {
     @apply text-[2rem];

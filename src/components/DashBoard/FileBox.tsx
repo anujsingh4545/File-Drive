@@ -26,7 +26,7 @@ const FileBox = ({type}: any) => {
               <div className="absolute right-[-11.5px] top-[28px] text-white bg-slate-700 rounded-sm flex flex-col items-center justify-center   ">
                 <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2 ">Download</p>
                 <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2 ">Favourites</p>
-                <p className="w-full hover:bg-slate-800 px-2 text-center cursor-pointer  text-[0.6rem] py-2 ">Delete</p>
+                <p className="w-full hover:bg-slate-800 px-2 text-center cursor-pointer  text-[0.7rem] py-2 ">Delete</p>
               </div>
             )}
           </div>
@@ -76,12 +76,12 @@ const FileBox = ({type}: any) => {
             </div>
           )}
 
-          <section className="flex items-center justify-start gap-2 col-span-2  md:col-span-4 ">
+          <section className=" items-center justify-start gap-2 hidden sm:flex col-span-0 sm:col-span-2  lg:col-span-4 ">
             <img src="/unnamed.png" alt="" className=" h-6 rounded-full outline-double outline-1 p-[0.5px] outline-slate-800 " />
-            <p className=" text-[0.7rem] line-clamp-1 flex-1 hidden md:flex  "> anujsinghsisodiya5341</p>
+            <p className=" text-[0.7rem] line-clamp-1 flex-1 hidden lg:flex  "> anujsinghsisodiya5341</p>
           </section>
 
-          <p className=" text-[0.7rem] col-span-5 md:col-span-2  text-left line-clamp-1 "> 5:40 PM (01/12/2002) </p>
+          <p className=" text-[0.7rem] col-span-7 sm:col-span-5 md:col-span-3 lg:col-span-2  text-left line-clamp-1 "> 5:40 PM (01/12/2002) </p>
 
           <button onClick={() => setShowOptions(!showOptions)} onBlur={() => setShowOptions(false)} className=" w-full  justify-end items-end flex  col-span-1  ">
             <ListFilter size={18} className=" cursor-pointer   " />
