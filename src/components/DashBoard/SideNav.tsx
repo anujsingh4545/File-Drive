@@ -29,7 +29,7 @@ const SideNav = () => {
 
   return (
     <>
-      <div className={` z-40 w-[50%] sm:w-[40%] md:w-[20%] top-0 lg:w-[15%] mt-[60px] h-[100lvh]  bg-white md:bg-white/30  fixed  ${showpanel ? "left-0" : "left-[-500px] "} ease-in-out duration-300  `}>
+      <div className={` z-30 w-[50%] sm:w-[40%] md:w-[20%] top-0 lg:w-[15%] mt-[60px] h-[100lvh]  bg-white md:bg-white/30  fixed  ${showpanel ? "left-0" : "left-[-500px] "} ease-in-out duration-300  `}>
         <main className=" w-full h-full  flex flex-col items-left px-5 py-3">
           <AlignJustify className=" md:hidden text-gray-700 hover:text-gray-950 cursor-pointer ease-in-out duration-150 " onClick={() => setShowPanel(false)} />
 

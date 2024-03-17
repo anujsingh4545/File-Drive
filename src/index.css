@@ -6,6 +6,18 @@
   @apply px-5 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  outline-none rounded-sm;
 }
 
+.setting_pNav {
+  @apply flex items-center justify-start  gap-4 cursor-pointer w-full px-8  py-2 hover:bg-black/40  ease-in-out duration-150 transform;
+}
+
+.account1 {
+  @apply w-full md:w-[30%] text-center text-[0.8rem]  bg-black/40 rounded-t-md md:rounded-tr-none  md:rounded-l-md py-1 md:py-3;
+}
+
+.account2 {
+  @apply w-full md:w-[70%] md:px-5 py-1 md:py-3 text-center md:text-left shadow-md rounded-b-md md:rounded-bl-none md:rounded-r-md bg-black/10 text-[0.8rem];
+}
+
 @layer base {
   body {
     @apply text-[0.9rem];
@@ -42,5 +54,5 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #b37ced;
+  background: #757576c0;
 }

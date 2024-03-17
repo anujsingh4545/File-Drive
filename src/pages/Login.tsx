@@ -1,6 +1,25 @@
+import {useRecoilValue} from "recoil";
 import LoginMedia from "../components/Login/LoginMedia";
+import UserData from "../recoil/atoms/UserData";
+import {Navigate, useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import LoadingData from "../recoil/atoms/LoadingUserData";
 
 const Login = () => {
+  const user: any = useRecoilValue(UserData);
+  const loading_data: boolean = useRecoilValue(LoadingData);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user && user.user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+
+  if (loading_data) {
+    return " ";
+  }
+
   return (
     <div className=" w-full h-[100dvh] pt-[60px] flex items-center justify-center  px-3 md:px-0 ">
       <main className=" w-[100%] md:w-[50%] lg:w-[30%]  h-fit  flex flex-col items-center justify-center bg-white/20  rounded-md shadow-md px-5 py-10  ">

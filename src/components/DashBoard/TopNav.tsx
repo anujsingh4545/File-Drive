@@ -1,13 +1,15 @@
 import {LayoutGrid, Rows3, Search, Upload} from "lucide-react";
-import {useState} from "react";
 import {useRecoilState} from "recoil";
 import viewFilesOrder from "../../recoil/atoms/ViewFilesOrder";
+import uploadFileBox from "../../recoil/atoms/UploadFileBox";
 
 const TopNav = () => {
   const [fileorder, setFileOrder] = useRecoilState(viewFilesOrder);
 
+  const [uploadfile, setUploadFile] = useRecoilState(uploadFileBox);
+
   return (
-    <main className="  shadow-sm   h-36 bg-white/30 ">
+    <main className=" shadow-sm   h-36 bg-white/30 ">
       <div>
         <section className=" w-full  mt-5   flex items-center justify-between px-3 md:px-10 ">
           <h1 className="hidden md:flex font-poppins font-bold tracking-wider   text-slate-800 "> Your Files </h1>
@@ -19,8 +21,8 @@ const TopNav = () => {
             </div>
           </div>
 
-          <button className="py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  outline-none rounded-sm flex items-center justify-center px-2 md:gap-2">
-            <p className="hidden md:flex">Upload File </p>
+          <button className="py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:scale-105 ease-in-out duration-150  transform  outline-none rounded-sm flex items-center justify-center px-2 md:gap-2" onClick={() => setUploadFile(true)}>
+            <p className="hidden md:flex">Upload File</p>
             <Upload size={18} />
           </button>
         </section>
