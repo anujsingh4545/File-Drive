@@ -18,7 +18,10 @@ const Home = () => {
 
         <section className=" flex  mt-10 items-center justify-center gap-5 flex-row ">
           {loading_data ? (
-            <div className=" h-[2.35rem] w-20 "> </div>
+            <div className=" h-[2.35rem] w-full ">
+              <section className=" w-60 h-2 bg-purple-300 animate-pulse  rounded-xl "></section>
+              <section className=" w-60 h-2 bg-purple-300 animate-pulse  rounded-xl mt-3 "></section>
+            </div>
           ) : (
             <>
               <Link to="/dashboard">

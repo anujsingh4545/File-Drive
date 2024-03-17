@@ -1,5 +1,5 @@
 import axios from "axios";
-import {lookInSession} from "./Session";
+import {lookInSession, removeFromSession} from "./Session";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 export const verifyUser = async () => {
@@ -7,18 +7,26 @@ export const verifyUser = async () => {
 
   if (!userSession) return null;
 
-  const res = await axios.post(
-    "http://localhost:4000/api/v1/user/getuser",
-    {},
-    {
-      headers: {
-        authorization: `Bearer ${userSession}`,
-      },
+  try {
+    const res = await axios.post(
+      "http://localhost:4000/api/v1/user/getuser",
+      {},
+      {
+        headers: {
+          authorization: `Bearer ${userSession}`,
+        },
+      }
+    );
+
+    if (res.data.success) {
+      return res.data;
+    } else {
+      return null;
     }
-  );
-  if (res.data.success) {
-    return res.data;
-  } else {
+  } catch (error: any) {
+    if ((error.response.data.ckeck = "expired")) {
+      removeFromSession("user");
+    }
     return null;
   }
 };
