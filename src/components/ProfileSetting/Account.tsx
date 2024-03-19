@@ -1,4 +1,8 @@
+import {useRecoilState} from "recoil";
+import UserData from "../../recoil/atoms/UserData";
+
 const Account = () => {
+  const [user, setuser]: any = useRecoilState(UserData);
   return (
     <div className="  w-full h-full ">
       <h2>Account</h2>
@@ -6,7 +10,7 @@ const Account = () => {
 
       <section className="  w-full flex items-center justify-center mt-3 flex-col  ">
         <label htmlFor="fileupload">
-          <img src="/unnamed.png" alt="" className=" size-40 cursor-pointer rounded-full " />
+          <img src={user.user.profile} alt="" className=" size-40 cursor-pointer rounded-full " />
         </label>
 
         <input type="file" accept=".jpeg, .png, .jpg" id="fileupload" className="hidden" />
@@ -14,12 +18,12 @@ const Account = () => {
       </section>
 
       <section className=" w-full flex flex-col md:flex-row items-start justify-center mt-10 ">
-        <p className=" account1"> Username</p>
-        <p className="account2">anujsinghsisodiya5341</p>
+        <p className=" account1"> Name</p>
+        <p className="account2">{user.user.name}</p>
       </section>
       <section className=" w-full flex flex-col md:flex-row items-start justify-center mt-5 ">
         <p className="  account1 "> Email</p>
-        <p className=" account2">anujsinghsisodiya5341@gmail.com</p>
+        <p className=" account2">{user.user.email}</p>
       </section>
     </div>
   );

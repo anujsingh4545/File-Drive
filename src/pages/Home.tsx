@@ -24,7 +24,7 @@ const Home = () => {
             </div>
           ) : (
             <>
-              <Link to="/dashboard">
+              <Link to="/dashboard/personal">
                 <button className=" common_btn ">Get Started </button>
               </Link>
               <p className=" cursor-pointer  flex items-center justify-center gap-2">

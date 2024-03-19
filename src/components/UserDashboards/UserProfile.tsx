@@ -11,9 +11,10 @@ import ProfileSetting from "../../recoil/atoms/ProfileSetting";
 const UserProfile = ({handle, id}: any) => {
   const navigate = useNavigate();
 
-  const [user, setuser] = useRecoilState(UserData);
-
+  const [user, setuser]: any = useRecoilState(UserData);
   const [pSetting, setPSetting] = useRecoilState(ProfileSetting);
+
+  console.log(user);
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -45,11 +46,11 @@ const UserProfile = ({handle, id}: any) => {
     <div id="profiledash" className="absolute right-0 top-[40px] px-3 py-5  bg-white shadow-md  w-[21rem] cursor-default ">
       <main className=" flex flex-col items-center justify-center gap-y-3">
         <section className=" w-full flex flex-row items-center justify-center gap-4 ">
-          <img src="/unnamed.png" alt="" className=" size-10 rounded-full " />
+          <img src={user.user.profile} alt="" className=" size-10 rounded-full " />
 
           <div className=" flex flex-col items-start flex-1 justify-center">
-            <p className=" text-[0.7rem]  w-[calc(21rem-5rem)]  text-ellipsis overflow-clip   ">anujsinghsisodiya5341</p>
-            <p className="text-[0.7rem] w-[calc(21rem-5rem)]  text-ellipsis overflow-clip  text-gray-600">anujsinghsisodiya5341@gmail.com</p>
+            <p className=" text-[0.7rem]  w-[calc(21rem-5rem)]  text-ellipsis overflow-clip   ">{user.user.name}</p>
+            <p className="text-[0.7rem] w-[calc(21rem-5rem)]  text-ellipsis overflow-clip  text-gray-600">{user.user.email}</p>
           </div>
         </section>
 
