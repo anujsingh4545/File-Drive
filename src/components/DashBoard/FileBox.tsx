@@ -6,12 +6,17 @@ import UserData from "../../recoil/atoms/UserData";
 import axios from "axios";
 import toast from "react-hot-toast";
 import CallFileLoad from "../../recoil/atoms/CallFileLoad";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile, fav, trash, trashtime}: any) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const fileorder = useRecoilValue(viewFilesOrder);
 
   const [callFileL, setCallFileL] = useRecoilState(CallFileLoad);
+
+  const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
+  const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
 
   const date = new Date(created);
 
@@ -55,8 +60,14 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
   const MakeFav = async () => {
     const fileId = id;
 
+    let Personalorroup = "personal";
+
+    if (CurrentGroupName != "Personal Account" && CurrentGroupid.length != 0) {
+      Personalorroup = "group";
+    }
+
     await axios
-      .post("http://localhost:4000/api/v1/personal/makefav", {fileId})
+      .post(`http://localhost:4000/api/v1/${Personalorroup}/makefav`, {fileId})
       .then((response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -74,8 +85,14 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
   const RemoveFav = async () => {
     const fileId = id;
 
+    let Personalorroup = "personal";
+
+    if (CurrentGroupName != "Personal Account" && CurrentGroupid.length != 0) {
+      Personalorroup = "group";
+    }
+
     await axios
-      .post("http://localhost:4000/api/v1/personal/removefav", {fileId})
+      .post(`http://localhost:4000/api/v1/${Personalorroup}/removefav`, {fileId})
       .then((response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -93,8 +110,14 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
   const RestoreFile = async () => {
     const fileId = id;
 
+    let Personalorroup = "personal";
+
+    if (CurrentGroupName != "Personal Account" && CurrentGroupid.length != 0) {
+      Personalorroup = "group";
+    }
+
     await axios
-      .post("http://localhost:4000/api/v1/personal/removeTrash", {fileId})
+      .post(`http://localhost:4000/api/v1/${Personalorroup}/removeTrash`, {fileId})
       .then((response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -112,8 +135,13 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
   const DelFile = async () => {
     const fileId = id;
 
+    let Personalorroup = "personal";
+
+    if (CurrentGroupName != "Personal Account" && CurrentGroupid.length != 0) {
+      Personalorroup = "group";
+    }
     await axios
-      .post("http://localhost:4000/api/v1/personal/makeTrash", {fileId})
+      .post(`http://localhost:4000/api/v1/${Personalorroup}/makeTrash`, {fileId})
       .then((response) => {
         console.log(response.data);
         if (response.data.success) {

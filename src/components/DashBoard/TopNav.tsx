@@ -6,7 +6,7 @@ import SortFiles from "../../recoil/atoms/SortFiles";
 import {useRef} from "react";
 import SearchBox from "../../recoil/atoms/SearchBox";
 
-const TopNav = () => {
+const TopNav = ({navHead}: any) => {
   const [fileorder, setFileOrder] = useRecoilState(viewFilesOrder);
   const [uploadfile, setUploadFile] = useRecoilState(uploadFileBox);
   const [sortFile, setSortFiles] = useRecoilState(SortFiles);
@@ -28,9 +28,9 @@ const TopNav = () => {
     <main className=" shadow-sm   h-36 bg-white/30 ">
       <div>
         <section className=" w-full  mt-5   flex items-center justify-between px-3 md:px-10 ">
-          <h1 className="hidden md:flex font-poppins font-bold tracking-wider   text-slate-800 "> Your Files </h1>
+          <h1 className=" w-52 hidden md:flex font-poppins font-bold tracking-wider  transform ease-in-out duration-200   text-slate-800 "> {navHead} </h1>
 
-          <div className=" flex items-center justify-center w-full mr-3 md:mr-0  md:w-[35%] ">
+          <div className=" flex items-center justify-center w-full mr-4  md:mr-[82px]  md:w-[35%] ">
             <input ref={searchbox} type="text" className=" w-full h-full px-3 py-3  rounded-l-full outline-none " placeholder="Enter file name" onKeyDown={submitSearch} />
 
             {sbox.length > 0 ? (

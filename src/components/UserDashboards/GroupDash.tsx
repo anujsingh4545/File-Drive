@@ -1,13 +1,23 @@
-import {Contact} from "lucide-react";
-import React, {useEffect} from "react";
+import {CloudHail, Contact} from "lucide-react";
+import React, {useEffect, useState} from "react";
 import Group from "./Group";
+import {useRecoilState} from "recoil";
+import UserData from "../../recoil/atoms/UserData";
+import axios from "axios";
+import toast from "react-hot-toast";
+import NavbarLoad from "../../recoil/atoms/NavbarLoad";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 interface GroupDashProps {
+  admin: any;
+  member: any;
+  loading: boolean;
   handle: any;
   id: string;
 }
 
-const GroupDash = ({handle, id}: GroupDashProps) => {
+const GroupDash = ({admin, member, loading, handle, id}: GroupDashProps) => {
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       const brandSection = document.getElementById("groupdash");
@@ -31,35 +41,32 @@ const GroupDash = ({handle, id}: GroupDashProps) => {
       <Group icon="personal" name="Personal Account" color="bg-blue-500" />
 
       <p className="  text-[0.8rem] w-full  pt-3 ">
-        Admin <span>(5)</span>
+        Admin <span>({admin.length})</span>
       </p>
 
       <section className=" flex flex-col gap-y-0 w-full max-h-[10rem] h-fit overflow-scroll ">
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
-        <Group icon="admin" name="logoutUser" color="bg-purple-700" />
+        {loading ? (
+          <div className=" w-full flex flex-col items-center justify-center gap-y-3 mt-2 ">
+            <section className=" rounded-full w-full h-3 animate-pulse bg-gray-200 "></section>
+            <section className=" rounded-full w-full h-3 animate-pulse bg-gray-200 "></section>
+          </div>
+        ) : (
+          admin.map((group: any) => <Group key={group.id} id={group.id} icon="admin" name={group.name} color="bg-purple-700" />)
+        )}
       </section>
       <p className="  text-[0.8rem] w-full  pt-1 ">
-        Member <span>(5)</span>
+        Member <span>({member.length})</span>
       </p>
 
       <section className=" flex flex-col gap-y-0 w-full  max-h-[10rem] overflow-scroll">
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
-        <Group icon="admin" name="logoutUser" color="bg-cyan-600" />
+        {loading ? (
+          <div className=" w-full flex flex-col items-center justify-center gap-y-3 mt-2 ">
+            <section className=" rounded-full w-full h-3 animate-pulse bg-gray-200 "></section>
+            <section className=" rounded-full w-full h-3 animate-pulse bg-gray-200 "></section>
+          </div>
+        ) : (
+          member.map((group: any) => <Group key={group.id} id={group.id} icon="admin" name={group.name} color="bg-cyan-600" />)
+        )}
       </section>
 
       {/*  */}

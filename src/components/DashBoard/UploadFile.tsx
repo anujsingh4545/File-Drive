@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import UserData from "../../recoil/atoms/UserData";
 import CallFileLoad from "../../recoil/atoms/CallFileLoad";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 const UploadFile = () => {
   const [uploadfile, setUploadFile] = useRecoilState(uploadFileBox);
@@ -13,8 +15,9 @@ const UploadFile = () => {
   const users: any = useRecoilValue(UserData);
   const titleref = useRef<any>();
   const [file, setFile] = useState(null);
-
   const [loading, setLoading] = useState(false);
+  const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
+  const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
 
   const handleFileChange = (event: any) => {
     setFile(event.target.files[0]);
@@ -36,24 +39,46 @@ const UploadFile = () => {
     formData.append("image", file!);
     formData.append("userid", users.user.id);
 
-    await axios
-      .post("http://localhost:4000/api/v1/personal/upload", formData)
-      .then((response) => {
-        if (response.data.success) {
-          toast.success("File Uploaded Sucessfully");
-          setLoading(false);
-          setUploadFile(false);
-          setCallLoad(!CallLoad);
-        } else {
-          setLoading(false);
-          setUploadFile(false);
+    if (CurrentGroupName === "Personal Account" && CurrentGroupid.length === 0) {
+      await axios
+        .post("http://localhost:4000/api/v1/personal/upload", formData)
+        .then((response) => {
+          if (response.data.success) {
+            toast.success("File Uploaded Sucessfully");
+            setLoading(false);
+            setUploadFile(false);
+            setCallLoad(!CallLoad);
+          } else {
+            setLoading(false);
+            setUploadFile(false);
+            toast.error("Something went wrong!");
+          }
+        })
+        .catch((e) => {
           toast.error("Something went wrong!");
-        }
-      })
-      .catch((e) => {
-        toast.error("Something went wrong!");
-        setLoading(false);
-      });
+          setLoading(false);
+        });
+    } else {
+      formData.append("GroupId", CurrentGroupid);
+      await axios
+        .post("http://localhost:4000/api/v1/group/upload", formData)
+        .then((response) => {
+          if (response.data.success) {
+            toast.success("File Uploaded Sucessfully");
+            setLoading(false);
+            setUploadFile(false);
+            setCallLoad(!CallLoad);
+          } else {
+            setLoading(false);
+            setUploadFile(false);
+            toast.error("Something went wrong!");
+          }
+        })
+        .catch((e) => {
+          toast.error("Something went wrong!");
+          setLoading(false);
+        });
+    }
   };
 
   return (

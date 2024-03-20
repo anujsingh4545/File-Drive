@@ -24,9 +24,7 @@ export const verifyUser = async () => {
       return null;
     }
   } catch (error: any) {
-    if ((error.response.data.ckeck = "expired")) {
-      removeFromSession("user");
-    }
+    console.log(error);
     return null;
   }
 };

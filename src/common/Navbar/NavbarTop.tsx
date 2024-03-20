@@ -1,18 +1,57 @@
 import {Link} from "react-router-dom";
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import UserData from "../../recoil/atoms/UserData";
 import LoadingData from "../../recoil/atoms/LoadingUserData";
 import {useEffect, useState} from "react";
 import UserProfile from "../../components/UserDashboards/UserProfile";
 import {Building, ChevronsUpDown} from "lucide-react";
 import GroupDash from "../../components/UserDashboards/GroupDash";
+import axios from "axios";
+import NavbarLoad from "../../recoil/atoms/NavbarLoad";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 const NavbarTop = () => {
-  const user: any = useRecoilValue(UserData);
   const loading_data: boolean = useRecoilValue(LoadingData);
 
   const [userDash, setUserDash] = useState(false);
   const [groupDash, setGroupDash] = useState(false);
+  const [admins, setAdmins] = useState([]);
+  const [members, setMembers] = useState([]);
+  const [user, setuser]: any = useRecoilState(UserData);
+  const [navLoad, setnavLoad] = useRecoilState(NavbarLoad);
+  const [loading, setLoading] = useState(false);
+  const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
+  const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (user.user && user.user.id) {
+        setLoading(true);
+        await axios
+          .post("http://localhost:4000/api/v1/user/getadminmember", {userId: user.user.id})
+          .then((response) => {
+            if (response.data.success) {
+              setAdmins(response.data.admin);
+
+              // Filter out members who are also admins
+              const filteredMembers = response.data.member.filter((member: any) => {
+                return !response.data.admin.some((admin: any) => admin.id === member.id);
+              });
+              setMembers(filteredMembers);
+
+              setLoading(false);
+            } else {
+              setLoading(false);
+            }
+          })
+          .catch((e) => {
+            setLoading(false);
+          });
+      }
+    };
+    fetchData();
+  }, [user, navLoad]);
 
   return (
     <main className="  fixed h-[60px] top-0 z-20  w-full bg-white shadow-md ">
@@ -40,11 +79,11 @@ const NavbarTop = () => {
                 </div>
 
                 <div className=" hidden md:flex items-center justify-center px-2">
-                  <p className=" text-gray-800 w-[10rem]   ">Another Team</p>
+                  <p className=" text-gray-800 w-[10rem]   ">{CurrentGroupName}</p>
                   <ChevronsUpDown size={18} className=" text-gray-700" />
                 </div>
 
-                {groupDash && <GroupDash handle={setGroupDash} id="grpprofile" />}
+                {groupDash && <GroupDash admin={admins} member={members} loading={loading} handle={setGroupDash} id="grpprofile" />}
               </section>
 
               {/*  */}

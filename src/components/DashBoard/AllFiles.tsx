@@ -1,6 +1,6 @@
 // import Empty from "../../common/Empty";
 
-import {useRecoilValue} from "recoil";
+import {useRecoilState, useRecoilValue} from "recoil";
 import FileBox from "./FileBox";
 import viewFilesOrder from "../../recoil/atoms/ViewFilesOrder";
 import Files from "../../recoil/atoms/Files";
@@ -8,6 +8,8 @@ import FileLoading from "../../recoil/atoms/FileLoading";
 import Empty from "../../common/Empty";
 import SortFiles from "../../recoil/atoms/SortFiles";
 import SearchBox from "../../recoil/atoms/SearchBox";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 const AllFiles = () => {
   const fileorder = useRecoilValue(viewFilesOrder);
@@ -15,6 +17,8 @@ const AllFiles = () => {
   const LoadingFile = useRecoilValue(FileLoading);
   const sortFile = useRecoilValue(SortFiles);
   const searchText = useRecoilValue(SearchBox);
+  const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
+  const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
 
   return (
     <div className=" w-full overflow-y-scroll h-[calc(100lvh-198px)]  text-white ">

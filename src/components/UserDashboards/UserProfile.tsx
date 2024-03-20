@@ -14,8 +14,6 @@ const UserProfile = ({handle, id}: any) => {
   const [user, setuser]: any = useRecoilState(UserData);
   const [pSetting, setPSetting] = useRecoilState(ProfileSetting);
 
-  console.log(user);
-
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       const brandSection = document.getElementById("profiledash");

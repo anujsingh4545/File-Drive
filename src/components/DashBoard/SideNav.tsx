@@ -2,7 +2,7 @@ import {AlignJustify, AlignRight, File, Star, Trash} from "lucide-react";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-const SideNav = () => {
+const SideNav = ({setnavHead}: any) => {
   const [showpanel, setShowPanel] = useState<boolean>(true);
 
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -34,20 +34,20 @@ const SideNav = () => {
           <AlignJustify className=" md:hidden text-gray-700 hover:text-gray-950 cursor-pointer ease-in-out duration-150 " onClick={() => setShowPanel(false)} />
 
           <section className=" w-full mt-10 md:mt-5 flex-col flex items-left justify-center gap-y-5 ">
-            <Link to="/dashboard/personal/files">
-              <p className=" w-full flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer hover:text-blue-500 ease-in-out  duration-150 transform ">
+            <Link to="/dashboard/files">
+              <p className=" w-full flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer hover:text-blue-500 ease-in-out  duration-150 transform " onClick={() => setnavHead("All Files")}>
                 <File size={18} /> All Files
               </p>
             </Link>
 
-            <Link to="/dashboard/personal/favourites">
-              <p className=" w-full  flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer  hover:text-blue-500 ease-in-out  duration-150 transform ">
+            <Link to="/dashboard/favourites">
+              <p className=" w-full  flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer  hover:text-blue-500 ease-in-out  duration-150 transform " onClick={() => setnavHead("Favourites")}>
                 <Star size={18} /> Favourites
               </p>
             </Link>
 
-            <Link to="/dashboard/personal/trash">
-              <p className=" w-full  flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer  hover:text-blue-500 ease-in-out  duration-150 transform ">
+            <Link to="/dashboard/trash">
+              <p className=" w-full  flex  items-start  gap-3 font-medium text-slate-800 cursor-pointer  hover:text-blue-500 ease-in-out  duration-150 transform " onClick={() => setnavHead("Trash Files")}>
                 <Trash size={18} /> Trash
               </p>
             </Link>

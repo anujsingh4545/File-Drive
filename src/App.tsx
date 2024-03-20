@@ -41,11 +41,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/dashboard/personal" element={<DashBoard />}>
-          <Route path="/dashboard/personal" element={<AllFiles />} />
-          <Route path="/dashboard/personal/files" element={<AllFiles />} />
-          <Route path="/dashboard/personal/favourites" element={<Favourite />} />
-          <Route path="/dashboard/personal/trash" element={<DeleteFile />} />
+        <Route path="/dashboard" element={<DashBoard />}>
+          <Route path="/dashboard" element={<AllFiles />} />
+          <Route path="/dashboard/files" element={<AllFiles />} />
+          <Route path="/dashboard/favourites" element={<Favourite />} />
+          <Route path="/dashboard/trash" element={<DeleteFile />} />
         </Route>
         <Route path="/*" element={<NotFound />} />
       </Routes>

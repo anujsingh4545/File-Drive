@@ -4,7 +4,7 @@ const Empty = () => {
       <section className="  w-[15%] text-center ">
         <img src="/empty.svg" alt="" />
       </section>
-      <p className=" mt-5 text-black  ">No file found!</p>
+      <p className=" mt-5 text-black  ">No data found!</p>
     </div>
   );
 };

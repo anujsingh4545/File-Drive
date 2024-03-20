@@ -14,7 +14,7 @@ const ProfileMain1 = () => {
 
   return (
     <div className="fixed top-0 left-0  z-50 h-[100lvh] w-[100lvw]   flex items-center justify-center">
-      <section className=" fixed top bg-black/60  cursor-pointer z-50  w-full h-full"></section>
+      <section className=" fixed top bg-black/60  cursor-pointer z-50  w-full h-full" onClick={() => setPSetting(false)}></section>
       {/*  */}
 
       <main className=" w-[95%] md:w-[80%] lg:w-[60%] flex-col md:flex-row  h-[40rem] lg:h-[30rem]  z-50  flex items-center justify-center shadow-md ">
