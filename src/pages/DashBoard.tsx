@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import SideNav from "../components/DashBoard/SideNav";
 import TopNav from "../components/DashBoard/TopNav";
 import UploadFile from "../components/DashBoard/UploadFile";
@@ -14,20 +14,23 @@ import FileLoading from "../recoil/atoms/FileLoading";
 import CallFileLoad from "../recoil/atoms/CallFileLoad";
 import CurrentGroup from "../recoil/atoms/CurrentGroup";
 import CurrentGroupId from "../recoil/atoms/CurrentGroupId";
+import LoadingData from "../recoil/atoms/LoadingUserData";
+import UserData from "../recoil/atoms/UserData";
 
 const DashBoard = () => {
   const uploadfile = useRecoilValue(uploadFileBox);
   const profileSetting = useRecoilValue(ProfileSetting);
-
   const [File, setFile] = useRecoilState(Files);
   const [Fileload, setFileLoad] = useRecoilState(FileLoading);
-
   const [navHeader, setNavHeader] = useState("All Files");
-
   const CallFileLoading = useRecoilValue(CallFileLoad);
-
   const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
   const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
+  const loading_data: boolean = useRecoilValue(LoadingData);
+
+  const user: any = useRecoilValue(UserData);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const GetFiles = async () => {
@@ -37,7 +40,7 @@ const DashBoard = () => {
       if (CurrentGroupName === "Personal Account" && CurrentGroupid.length === 0) {
         await axios
           .post(
-            "http://localhost:4000/api/v1/personal/getallfile",
+            "https://files-drive.vercel.app/api/v1/personal/getallfile",
             {},
             {
               headers: {
@@ -60,7 +63,7 @@ const DashBoard = () => {
       } else {
         await axios
           .post(
-            "http://localhost:4000/api/v1/group/getallfile",
+            "https://files-drive.vercel.app/api/v1/group/getallfile",
             {groupId: CurrentGroupid},
             {
               headers: {
@@ -86,13 +89,20 @@ const DashBoard = () => {
     GetFiles();
   }, [CallFileLoading]);
 
-  return (
+  useEffect(() => {
+    if (!user.user && !loading_data) {
+      navigate("/");
+    }
+  }, [loading_data]);
+
+  return loading_data ? (
+    <></>
+  ) : (
     <div className=" w-full h-[100lvh] ">
       <SideNav setnavHead={setNavHeader} />
 
       {uploadfile && <UploadFile />}
       {profileSetting && <ProfileMain1 />}
-
       <section className=" flex flex-col w-full md:w-[80%] lg:w-[85%] right-0 flex-1  fixed  mt-[60px]  ">
         <TopNav navHead={navHeader} />
         <Outlet />

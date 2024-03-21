@@ -3,11 +3,14 @@ import {useRef, useState} from "react";
 import {lookInSession} from "../../common/Session";
 import toast from "react-hot-toast";
 import axios from "axios";
+import NavbarLoad from "../../recoil/atoms/NavbarLoad";
+import {useRecoilState} from "recoil";
 
 const CreateOrg = () => {
   const nameRef: any = useRef();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [navLoad, setnavLoad] = useRecoilState(NavbarLoad);
 
   const createOrg = async () => {
     let userSession = lookInSession("user");
@@ -19,7 +22,7 @@ const CreateOrg = () => {
         setLoading(true);
         await axios
           .post(
-            "http://localhost:4000/api/v1/group/create",
+            "https://files-drive.vercel.app/api/v1/group/create",
             {
               name: nameRef.current.value,
             },
@@ -33,6 +36,7 @@ const CreateOrg = () => {
             if (response.data.success) {
               toast.success(response.data.message);
               setLoading(false);
+              setnavLoad(!navLoad);
             } else {
               toast.error(response.data.message);
               setLoading(false);

@@ -47,6 +47,7 @@ function App() {
           <Route path="/dashboard/favourites" element={<Favourite />} />
           <Route path="/dashboard/trash" element={<DeleteFile />} />
         </Route>
+
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </>

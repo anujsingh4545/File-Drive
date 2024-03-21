@@ -21,7 +21,7 @@ const Manage = () => {
       if (user && user.user.id) {
         setLoading(true);
         await axios
-          .post("http://localhost:4000/api/v1/user/getadminmember", {userId: user.user.id})
+          .post("https://files-drive.vercel.app/api/v1/user/getadminmember", {userId: user.user.id})
           .then((response) => {
             if (response.data.success) {
               setAdmins(response.data.admin);
@@ -43,7 +43,7 @@ const Manage = () => {
   }, [loadChange]);
 
   return (
-    <div className="  w-full h-full ">
+    <div className="  w-full h-full flex flex-col ">
       <h2>Manage</h2>
       <p className="  text-[0.8rem] text-gray-500   pb-2">Manage your organizations!</p>
 
@@ -75,12 +75,14 @@ const Manage = () => {
 
             <div className="  h-[19rem] md:h-[27rem] lg:h-[17rem] overflow-scroll   ">
               {members.map((group: any, index: any) => (
-                <ManagePart key={group.id} index={index + 1} id={group.id} name={group.name} userCreated={group.userCreated} />
+                <ManagePart load={loadChange} loadChange={setloadChange} key={group.id} index={index + 1} id={group.id} name={group.name} userCreated={group.userCreated} />
               ))}
             </div>
           </main>
         ) : (
-          <Empty />
+          <div className="  flex-1 ">
+            <Empty />
+          </div>
         )
       ) : loading ? (
         <div className=" w-full mt-5  flex flex-col items-center justify-center gap-y-5 ">
@@ -105,7 +107,9 @@ const Manage = () => {
           </div>
         </main>
       ) : (
-        <Empty />
+        <div className="  flex-1 ">
+          <Empty />
+        </div>
       )}
     </div>
   );

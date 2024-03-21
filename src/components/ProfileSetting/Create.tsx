@@ -6,7 +6,7 @@ import SendRequest from "./SendRequest";
 const Create = () => {
   const [toggle, setToggle] = useState<string>("create");
   return (
-    <div className="  w-full h-full ">
+    <div className="  w-full h-full  flex flex-col">
       <h2>Create/Manage</h2>
       <p className="  text-[0.8rem] text-gray-500   pb-2">Create/Manage your organizations!</p>
 
@@ -22,7 +22,7 @@ const Create = () => {
         </button>
       </section>
 
-      <main className="mt-5">
+      <main className="mt-5  h-full flex-1 flex flex-col">
         {toggle == "create" && <CreateOrg />}
         {toggle == "members" && <ManageMember />}
         {toggle == "request" && <SendRequest />}

@@ -67,9 +67,8 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`http://localhost:4000/api/v1/${Personalorroup}/makefav`, {fileId})
+      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/makefav`, {fileId})
       .then((response) => {
-        console.log(response.data);
         if (response.data.success) {
           toast.success(response.data.message);
           setCallFileL(!callFileL);
@@ -92,9 +91,8 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`http://localhost:4000/api/v1/${Personalorroup}/removefav`, {fileId})
+      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/removefav`, {fileId})
       .then((response) => {
-        console.log(response.data);
         if (response.data.success) {
           toast.success(response.data.message);
           setCallFileL(!callFileL);
@@ -117,9 +115,8 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`http://localhost:4000/api/v1/${Personalorroup}/removeTrash`, {fileId})
+      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/removeTrash`, {fileId})
       .then((response) => {
-        console.log(response.data);
         if (response.data.success) {
           toast.success(response.data.message);
           setCallFileL(!callFileL);
@@ -141,9 +138,31 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
       Personalorroup = "group";
     }
     await axios
-      .post(`http://localhost:4000/api/v1/${Personalorroup}/makeTrash`, {fileId})
+      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/makeTrash`, {fileId})
       .then((response) => {
-        console.log(response.data);
+        if (response.data.success) {
+          toast.success(response.data.message);
+          setCallFileL(!callFileL);
+        } else {
+          toast.error(response.data.message);
+        }
+      })
+      .catch((e) => {
+        toast.error("Something went wrong!");
+      });
+  };
+
+  const PDeleteFile = async () => {
+    const fileId = id;
+
+    let Personalorroup = "personal";
+
+    if (CurrentGroupName != "Personal Account" && CurrentGroupid.length != 0) {
+      Personalorroup = "group";
+    }
+    await axios
+      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/deleteP`, {fileId})
+      .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);
           setCallFileL(!callFileL);
@@ -172,9 +191,14 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
               {showOptions && (
                 <div className="absolute right-[-11.5px] top-[28px] text-white bg-slate-700 rounded-sm flex flex-col items-center justify-center">
                   {trash ? (
-                    <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2" onClick={RestoreFile}>
-                      Restore
-                    </p>
+                    <>
+                      <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2" onClick={RestoreFile}>
+                        Restore
+                      </p>
+                      <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2" onClick={PDeleteFile}>
+                        Remove
+                      </p>
+                    </>
                   ) : (
                     <>
                       <p className=" w-full hover:bg-slate-800 px-2 text-center cursor-pointer text-[0.7rem] py-2" onClick={handleDownload}>

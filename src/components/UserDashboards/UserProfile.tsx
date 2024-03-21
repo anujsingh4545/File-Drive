@@ -59,8 +59,8 @@ const UserProfile = ({handle, id}: any) => {
           <p
             className=" text-gray-900 flex-1 cursor-pointer text-[0.8rem] "
             onClick={() => {
-              handle(false);
               setPSetting(true);
+              handle(false);
             }}
           >
             Manage account

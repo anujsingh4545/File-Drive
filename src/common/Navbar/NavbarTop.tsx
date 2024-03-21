@@ -29,7 +29,7 @@ const NavbarTop = () => {
       if (user.user && user.user.id) {
         setLoading(true);
         await axios
-          .post("http://localhost:4000/api/v1/user/getadminmember", {userId: user.user.id})
+          .post("https://files-drive.vercel.app/api/v1/user/getadminmember", {userId: user.user.id})
           .then((response) => {
             if (response.data.success) {
               setAdmins(response.data.admin);
@@ -89,10 +89,10 @@ const NavbarTop = () => {
               {/*  */}
               <section className=" cursor-pointer relative rounded-full ">
                 <img
-                  src="/unnamed.png"
+                  src={user.user.profile}
                   id="imgprofile"
-                  alt=""
-                  className=" w-10 rounded-full outline-dotted outline-1 p-[1px]  "
+                  alt="P"
+                  className=" w-10 rounded-full  p-[1px]  "
                   onClick={() => {
                     setUserDash(!userDash);
                   }}

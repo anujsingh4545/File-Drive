@@ -8,9 +8,13 @@ import UserData from "../../recoil/atoms/UserData";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {storeInSession} from "../../common/Session";
+import CurrentGroup from "../../recoil/atoms/CurrentGroup";
+import CurrentGroupId from "../../recoil/atoms/CurrentGroupId";
 
 const LoginMedia = ({name, profile}: {name: string; profile: string}) => {
   const [user, setUser] = useRecoilState(UserData);
+  const [CurrentGroupName, setCurrentGroupName] = useRecoilState(CurrentGroup);
+  const [CurrentGroupid, setCurrentGroupId] = useRecoilState(CurrentGroupId);
 
   const navigate = useNavigate();
 
@@ -38,11 +42,13 @@ const LoginMedia = ({name, profile}: {name: string; profile: string}) => {
               profile: user.photoURL,
             };
             await axios
-              .post("http://localhost:4000/api/v1/user", userData)
+              .post("https://files-drive.vercel.app/api/v1/user", userData)
               .then((result) => {
                 setUser(result.data);
                 storeInSession("user", result.data.token);
                 navigate("/dashboard");
+                setCurrentGroupName("Personal Account");
+                setCurrentGroupId("");
                 toast.success(result.data.message);
               })
               .catch((e) => {

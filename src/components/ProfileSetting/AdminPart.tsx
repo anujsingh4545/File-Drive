@@ -3,6 +3,8 @@ import {Delete} from "lucide-react";
 import {lookInSession} from "../../common/Session";
 import toast from "react-hot-toast";
 import {useState} from "react";
+import {useRecoilState} from "recoil";
+import NavbarLoad from "../../recoil/atoms/NavbarLoad";
 
 interface adminComp {
   load: any;
@@ -15,6 +17,7 @@ interface adminComp {
 
 const AdminPart = ({load, loadChange, id, createdAt, name, membercount}: adminComp) => {
   const [loading, setLoading] = useState(false);
+  const [navLoad, setnavLoad] = useRecoilState(NavbarLoad);
 
   const date = new Date(createdAt);
   const day = String(date.getDate()).padStart(2, "0");
@@ -29,7 +32,7 @@ const AdminPart = ({load, loadChange, id, createdAt, name, membercount}: adminCo
       setLoading(true);
       await axios
         .post(
-          "http://localhost:4000/api/v1/group/delete",
+          "https://files-drive.vercel.app/api/v1/group/delete",
           {grpId: id},
           {
             headers: {
@@ -41,6 +44,7 @@ const AdminPart = ({load, loadChange, id, createdAt, name, membercount}: adminCo
           if (response.data.success) {
             toast.success(response.data.message);
             loadChange(!load);
+            setnavLoad(!navLoad);
           } else {
             toast.error(response.data.message);
           }

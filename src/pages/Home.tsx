@@ -2,9 +2,12 @@ import {Divide, MoveRight} from "lucide-react";
 import {Link} from "react-router-dom";
 import {useRecoilValue} from "recoil";
 import LoadingData from "../recoil/atoms/LoadingUserData";
+import UserData from "../recoil/atoms/UserData";
 
 const Home = () => {
   const loading_data: boolean = useRecoilValue(LoadingData);
+
+  const user: any = useRecoilValue(UserData);
   return (
     <div className=" h-[100dvh] pt-[60px] ">
       <main className=" w-full h-full  flex  flex-col items-center justify-center  ">
@@ -22,11 +25,21 @@ const Home = () => {
               <section className=" w-60 h-2 bg-purple-300 animate-pulse  rounded-xl "></section>
               <section className=" w-60 h-2 bg-purple-300 animate-pulse  rounded-xl mt-3 "></section>
             </div>
-          ) : (
+          ) : user.user && user.user.id ? (
             <>
               <Link to="/dashboard/files">
                 <button className=" common_btn ">Get Started </button>
               </Link>
+              <p className=" cursor-pointer  flex items-center justify-center gap-2">
+                Learn More <MoveRight size={18} />
+              </p>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className=" common_btn ">Get Started </button>
+              </Link>
+
               <p className=" cursor-pointer  flex items-center justify-center gap-2">
                 Learn More <MoveRight size={18} />
               </p>

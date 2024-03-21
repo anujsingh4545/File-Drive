@@ -33,7 +33,7 @@ const ProfileMain1 = () => {
           </p>
         </section>
 
-        <section className=" w-full md:w-[70%] relative p-4 md:p-8 h-[74%]  md:h-full bg-white rounded-b-xl md:rounded-b-none md:rounded-r-xl md:rounded-br-xl ">
+        <section className=" w-full h-[74%]   md:w-[70%] relative p-4 md:p-8   md:h-full bg-white rounded-b-xl md:rounded-b-none md:rounded-r-xl md:rounded-br-xl ">
           {menu == 1 && <Account />}
           {menu == 2 && <Manage />}
           {menu == 3 && <Requests />}
