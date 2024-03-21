@@ -32,7 +32,7 @@ const AdminPart = ({load, loadChange, id, createdAt, name, membercount}: adminCo
       setLoading(true);
       await axios
         .post(
-          "https://files-drive.vercel.app/api/v1/group/delete",
+          "https://file-drive-backend.vercel.app/api/v1/group/delete",
           {grpId: id},
           {
             headers: {

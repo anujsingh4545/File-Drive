@@ -22,7 +22,7 @@ const CreateOrg = () => {
         setLoading(true);
         await axios
           .post(
-            "https://files-drive.vercel.app/api/v1/group/create",
+            "https://file-drive-backend.vercel.app/api/v1/group/create",
             {
               name: nameRef.current.value,
             },

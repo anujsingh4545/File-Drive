@@ -29,7 +29,7 @@ const NavbarTop = () => {
       if (user.user && user.user.id) {
         setLoading(true);
         await axios
-          .post("https://files-drive.vercel.app/api/v1/user/getadminmember", {userId: user.user.id})
+          .post("https://file-drive-backend.vercel.app/api/v1/user/getadminmember", {userId: user.user.id})
           .then((response) => {
             if (response.data.success) {
               setAdmins(response.data.admin);

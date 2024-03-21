@@ -32,7 +32,7 @@ const ManagePart = ({load, loadChange, index, id, name, userCreated}: ManageComp
       setLoading(true);
       await axios
         .post(
-          "https://files-drive.vercel.app/api/v1/group/deletemember",
+          "https://file-drive-backend.vercel.app/api/v1/group/deletemember",
           {groupId: id},
           {
             headers: {

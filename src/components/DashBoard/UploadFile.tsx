@@ -41,7 +41,7 @@ const UploadFile = () => {
 
     if (CurrentGroupName === "Personal Account" && CurrentGroupid.length === 0) {
       await axios
-        .post("https://files-drive.vercel.app/api/v1/personal/upload", formData)
+        .post("https://file-drive-backend.vercel.app/api/v1/personal/upload", formData)
         .then((response) => {
           if (response.data.success) {
             toast.success("File Uploaded Sucessfully");
@@ -61,7 +61,7 @@ const UploadFile = () => {
     } else {
       formData.append("GroupId", CurrentGroupid);
       await axios
-        .post("https://files-drive.vercel.app/api/v1/group/upload", formData)
+        .post("https://file-drive-backend.vercel.app/api/v1/group/upload", formData)
         .then((response) => {
           if (response.data.success) {
             toast.success("File Uploaded Sucessfully");

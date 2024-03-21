@@ -9,7 +9,7 @@ export const verifyUser = async () => {
 
   try {
     const res = await axios.post(
-      "https://files-drive.vercel.app/api/v1/user/getuser",
+      "https://file-drive-backend.vercel.app/api/v1/user/getuser",
       {},
       {
         headers: {

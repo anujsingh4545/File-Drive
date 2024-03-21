@@ -23,7 +23,7 @@ const ManageMember = () => {
         const userId = user.user.id;
         setLoading(true);
         await axios
-          .post("https://files-drive.vercel.app/api/v1/personal/getallagroups", {userId})
+          .post("https://file-drive-backend.vercel.app/api/v1/personal/getallagroups", {userId})
           .then((response) => {
             if (response.data.success) {
               setadminG(response.data.adminG);
@@ -56,7 +56,7 @@ const ManageMember = () => {
       setMLoading(true);
       await axios
         .post(
-          "https://files-drive.vercel.app/api/v1/group/getmembers",
+          "https://file-drive-backend.vercel.app/api/v1/group/getmembers",
           {groupId},
           {
             headers: {
@@ -86,7 +86,7 @@ const ManageMember = () => {
     if (groupId != "Group" && userSession) {
       await axios
         .post(
-          "https://files-drive.vercel.app/api/v1/group/changerole",
+          "https://file-drive-backend.vercel.app/api/v1/group/changerole",
           {UserId: id, groupId: groupId, role: role},
           {
             headers: {
@@ -120,7 +120,7 @@ const ManageMember = () => {
     if (groupId != "Group" && userSession) {
       await axios
         .post(
-          "https://files-drive.vercel.app/api/v1/group/deleteuser",
+          "https://file-drive-backend.vercel.app/api/v1/group/deleteuser",
           {UserId: id, groupId: groupId},
           {
             headers: {

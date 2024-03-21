@@ -40,7 +40,7 @@ const DashBoard = () => {
       if (CurrentGroupName === "Personal Account" && CurrentGroupid.length === 0) {
         await axios
           .post(
-            "https://files-drive.vercel.app/api/v1/personal/getallfile",
+            "https://file-drive-backend.vercel.app/api/v1/personal/getallfile",
             {},
             {
               headers: {
@@ -63,7 +63,7 @@ const DashBoard = () => {
       } else {
         await axios
           .post(
-            "https://files-drive.vercel.app/api/v1/group/getallfile",
+            "https://file-drive-backend.vercel.app/api/v1/group/getallfile",
             {groupId: CurrentGroupid},
             {
               headers: {

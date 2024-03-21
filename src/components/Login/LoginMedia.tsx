@@ -42,7 +42,7 @@ const LoginMedia = ({name, profile}: {name: string; profile: string}) => {
               profile: user.photoURL,
             };
             await axios
-              .post("https://files-drive.vercel.app/api/v1/user", userData)
+              .post("https://file-drive-backend.vercel.app/api/v1/user", userData)
               .then((result) => {
                 setUser(result.data);
                 storeInSession("user", result.data.token);

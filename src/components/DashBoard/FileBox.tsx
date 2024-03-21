@@ -67,7 +67,7 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/makefav`, {fileId})
+      .post(`https://file-drive-backend.vercel.app/api/v1/${Personalorroup}/makefav`, {fileId})
       .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);
@@ -91,7 +91,7 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/removefav`, {fileId})
+      .post(`https://file-drive-backend.vercel.app/api/v1/${Personalorroup}/removefav`, {fileId})
       .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);
@@ -115,7 +115,7 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
     }
 
     await axios
-      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/removeTrash`, {fileId})
+      .post(`https://file-drive-backend.vercel.app/api/v1/${Personalorroup}/removeTrash`, {fileId})
       .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);
@@ -138,7 +138,7 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
       Personalorroup = "group";
     }
     await axios
-      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/makeTrash`, {fileId})
+      .post(`https://file-drive-backend.vercel.app/api/v1/${Personalorroup}/makeTrash`, {fileId})
       .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);
@@ -161,7 +161,7 @@ const FileBox = ({id, type, title, imgurl, userid, created, name, email, profile
       Personalorroup = "group";
     }
     await axios
-      .post(`https://files-drive.vercel.app/api/v1/${Personalorroup}/deleteP`, {fileId})
+      .post(`https://file-drive-backend.vercel.app/api/v1/${Personalorroup}/deleteP`, {fileId})
       .then((response) => {
         if (response.data.success) {
           toast.success(response.data.message);

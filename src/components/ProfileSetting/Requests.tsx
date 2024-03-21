@@ -21,7 +21,7 @@ const Requests = () => {
         setLoading(true);
         await axios
           .post(
-            "https://files-drive.vercel.app/api/v1/request/getall",
+            "https://file-drive-backend.vercel.app/api/v1/request/getall",
             {},
             {
               headers: {
@@ -59,7 +59,7 @@ const Requests = () => {
       };
 
       await axios
-        .post("https://files-drive.vercel.app/api/v1/request/acceptreq", datasent, {
+        .post("https://file-drive-backend.vercel.app/api/v1/request/acceptreq", datasent, {
           headers: {
             authorization: `Bearer ${userSession}`,
           },
@@ -94,7 +94,7 @@ const Requests = () => {
       };
 
       await axios
-        .post("https://files-drive.vercel.app/api/v1/request/declinereq", datasent, {
+        .post("https://file-drive-backend.vercel.app/api/v1/request/declinereq", datasent, {
           headers: {
             authorization: `Bearer ${userSession}`,
           },

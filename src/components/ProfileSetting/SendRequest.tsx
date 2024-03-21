@@ -25,7 +25,7 @@ const SendRequest = () => {
         const userId = user.user.id;
         setLoading(true);
         await axios
-          .post("https://files-drive.vercel.app/api/v1/personal/getallagroups", {userId})
+          .post("https://file-drive-backend.vercel.app/api/v1/personal/getallagroups", {userId})
           .then((response) => {
             if (response.data.success) {
               setadminG(response.data.adminG);
@@ -62,7 +62,7 @@ const SendRequest = () => {
         setULoading(true);
         await axios
           .post(
-            "https://files-drive.vercel.app/api/v1/personal/getalluser",
+            "https://file-drive-backend.vercel.app/api/v1/personal/getalluser",
             {username: Username},
             {
               headers: {
@@ -99,7 +99,7 @@ const SendRequest = () => {
         };
 
         await axios
-          .post("https://files-drive.vercel.app/api/v1/request/add", DataSent, {
+          .post("https://file-drive-backend.vercel.app/api/v1/request/add", DataSent, {
             headers: {
               authorization: `Bearer ${userSession}`,
             },
